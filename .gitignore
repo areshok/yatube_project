@@ -130,6 +130,4 @@ dmypy.json
 
 .DS_Store
 
-yatube/posts/migrations/*
-
 .vscode/
