@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content%}
+
+  <main>
+
+    <div class="container py-5">
+
+      <h1>Группа:{{ group }}</h1>
+      {% if posts %}
+        {% for post in posts%}
+          <article>
+            <ul>
+              <li>
+                Автор: {{post.author.get_full_name}}
+              </li>
+              <li>
+                Дата публикации: {{post.pub_date|date:"d E Y"}}
+              </li>
+            </ul>      
+            <p>
+              {{post.text}}
+            </p>         
+          </article>
+          <hr>
+        {% endfor %}
+      {% else %}
+        <p>В данной группе нет постов</p>
+      {% endif %}
+
+    </div> 
+
+  </main>
+
+{% endblock %}
+
+
+
+
+
