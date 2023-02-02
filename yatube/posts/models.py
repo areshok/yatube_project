@@ -24,6 +24,7 @@ class Post(models.Model):
                               on_delete=models.SET_NULL,
                               blank=True,
                               null=True,
+                              related_name='post',
                               )
 
     class Meta:
