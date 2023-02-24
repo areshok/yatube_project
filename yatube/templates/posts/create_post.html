@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  Новый пост
+
+  {% if is_edit %}
+    Редактировать
+  {% else %}
+    Новый пост
+  {% endif %}
+
 {% endblock %}
 
 {% block content %}
@@ -14,8 +20,12 @@
     <div class="row justify-content-center">
       <div class="col-md-8 p-5">
         <div class="card">
-          <div class="card-header">       
-            Новый пост   
+          <div class="card-header"> 
+            {% if is_edit %}
+              Редактировать
+            {% else %}
+              Новый пост
+            {% endif %}  
           </div>
           <div class="card-body"> 
 
@@ -28,27 +38,27 @@
             {% csrf_token %}
 
           <div class="form-group row my-3 p-3">
-            <label for="id_text">
-              Текст поста                  
+            <label for="{{ form.text.id_for_label }}">
+              {{ form.text.label }}                 
               <span class="required text-danger" >*</span>   
             </label>
             
-            {{form.text}}
+            {{ form.text }}
 
-            <small id="id_text-help" class="form-text text-muted">
-              Текст нового поста
+            <small id="{{ form.text.id_for_label }}-help" class="form-text text-muted">
+              {{ form.text.help_text }}
             </small>                  
           </div> 
 
           <div class="form-group row my-3 p-3">
-            <label for="id_group">
-              Группа                  
+            <label for="{{ form.group.id_for_label }}">
+              {{ form.group.label}}                 
             </label>
 
-            {{form.group}}
+            {{ form.group }}
 
-            <small id="id_group-help" class="form-text text-muted">
-              Группа, к которой будет относиться пост
+            <small id="{{ form.group.id_for_label }}-help" class="form-text text-muted">
+              {{ form.group.help_text  }}
             </small>
 
             <div class="d-flex justify-content-end">
