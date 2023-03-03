@@ -25,7 +25,12 @@ SECRET_KEY = '%lqbf%0qqgg%%r-$hzgf1deqv)%wq!4z0g8j+h-2u(u&p^3t&('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '[::1]',
+    'testserver',
+]
 
 
 # Application definition
@@ -129,7 +134,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 OUTPUT_LIMIT = 10
-
+TEXT_LIMIT = 15
 
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'posts:index'
