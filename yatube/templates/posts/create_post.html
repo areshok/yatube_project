@@ -30,9 +30,9 @@
           <div class="card-body"> 
 
         {% if is_edit %}
-        <form method="post" action="{% url 'posts:post_edit' id %}">
+        <form method="post" action="{% url 'posts:post_edit' id %}" enctype="multipart/form-data">
         {% else %}
-        <form method="post" action="{% url 'posts:post_create' %}">
+        <form method="post" action="{% url 'posts:post_create' %}" enctype="multipart/form-data">
         {% endif %}
 
             {% csrf_token %}
@@ -60,6 +60,19 @@
             <small id="{{ form.group.id_for_label }}-help" class="form-text text-muted">
               {{ form.group.help_text  }}
             </small>
+          </div>
+
+            <div class="form-group row my-3 p-3">
+              <label for="{{ form.image.id_for_label }}">
+                {{ form.image.label}}                 
+              </label>
+
+              {{ form.image }}
+
+            <small id="{{ form.image.id_for_label }}-help" class="form-text text-muted">
+              {{ form.image.help_text  }}
+            </small>
+          </div>
 
             <div class="d-flex justify-content-end">
             {% if is_edit %}
