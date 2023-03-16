@@ -76,7 +76,6 @@ class Follow(models.Model):
                              related_name='follower',
                              help_text='Пользователь который подписывается',
                              verbose_name='Подписчик',
-                             
                              )
 
     author = models.ForeignKey(User,
@@ -85,6 +84,12 @@ class Follow(models.Model):
                                help_text='На кого подписываются',
                                verbose_name='Автор',
                                )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'author'], name='unique_follow')
+        ]
 
     def __str__(self):
         return f'Пользователь {self.user} подписался на {self.author}'
